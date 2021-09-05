@@ -50,8 +50,9 @@ class Array():
         return self.recursiveLinearSearch(x, i + 1)
 
     def binarySearch(self, x):
-        self.array.sort()
-        print("Array sorted:", self.array)
+        """
+        It only works on a sorted array
+        """
         p = 0
         r = self.length - 1
         iterations = 1
@@ -66,7 +67,21 @@ class Array():
                 p = q + 1
             iterations += 1
         return "Number not found!"
-        
+
+    def recursiveBinarySearch(self, r, x, iterations=1, p=0):
+        """
+        It only works on a sorted array
+        """
+        if p > r:
+            print(f"Iterations: {iterations}")
+            return "Number not found!"
+        q = (p + r) // 2
+        if self.array[q] == x:
+            print(f"Iterations: {iterations}")
+            return f"Number found at position: {q}"
+        if self.array[q] > x:
+            return self.recursiveBinarySearch(q-1, x, iterations + 1, p)
+        return self.recursiveBinarySearch(r, x, iterations + 1, q + 1)
 
     def __repr__(self):
         output = ""
