@@ -16,7 +16,7 @@ class Array():
         for i in range(self.length):
             if self.array[i] == x:
                 answer = f"Number found at position: {i}"
-                
+
         print("Iterations:", self.length)
         return answer
 
@@ -47,7 +47,26 @@ class Array():
         if self.array[i] == x:
             print(f"Iterations: {i + 1}")
             return f"Number found at position: {i}"
-        return self.recursiveLinearSearch(x, i + 1)    
+        return self.recursiveLinearSearch(x, i + 1)
+
+    def binarySearch(self, x):
+        self.array.sort()
+        print("Array sorted:", self.array)
+        p = 0
+        r = self.length - 1
+        iterations = 1
+        while p <= r:
+            q = (p + r) // 2
+            if self.array[q] == x:
+                print(f"Iterations: {iterations}")
+                return f"Number found at position {q}"
+            if self.array[q] > x:
+                r = q - 1
+            elif self.array[q] < x:
+                p = q + 1
+            iterations += 1
+        return "Number not found!"
+        
 
     def __repr__(self):
         output = ""
