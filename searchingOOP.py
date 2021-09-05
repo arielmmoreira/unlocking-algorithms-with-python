@@ -1,4 +1,4 @@
-import random, time
+import random
 
 class Array():
     
@@ -11,15 +11,12 @@ class Array():
         print("Array shuffled: ", self.array)
 
     def linearSearch(self, x):
-        startTime = time.time()
         answer = "Number not found!"
 
         for i in range(self.length):
             if self.array[i] == x:
                 answer = f"Number found at position: {i}"
-
-        clock = "Time of linear search: {:.10f}".format(time.time() - startTime) 
-        print(clock)
+                
         print("Iterations:", self.length)
         return answer
 
@@ -35,7 +32,6 @@ class Array():
     def sentinelLinearSearch(self, x):
         self.array.append(x)
         i = 0
-
         while self.array[i] != x:
             i += 1
 
@@ -51,7 +47,7 @@ class Array():
         if self.array[i] == x:
             print(f"Iterations: {i + 1}")
             return f"Number found at position: {i}"
-        return array.recursiveLinearSearch(x, i + 1)    
+        return self.recursiveLinearSearch(x, i + 1)    
 
     def __repr__(self):
         output = ""
