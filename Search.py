@@ -1,14 +1,6 @@
-import random
+from Array import Array
 
-class Array():
-    
-    def __init__(self, array):
-        self.array = array[:]
-        self.length = len(self.array)
-
-    def shuffle(self):
-        random.shuffle(self.array)
-        print("Array shuffled: ", self.array)
+class Search(Array):
 
     def linearSearch(self, x):
         answer = "Number not found!"
@@ -16,7 +8,6 @@ class Array():
         for i in range(self.length):
             if self.array[i] == x:
                 answer = f"Number found at position: {i}"
-
         print("Iterations:", self.length)
         return answer
 
@@ -82,9 +73,3 @@ class Array():
         if self.array[q] > x:
             return self.recursiveBinarySearch(q-1, x, iterations + 1, p)
         return self.recursiveBinarySearch(r, x, iterations + 1, q + 1)
-
-    def __repr__(self):
-        output = ""
-        for element in self.array:
-            output += str(element) + " "
-        return output
