@@ -1,0 +1,2 @@
+    # selection(arr)
+    # insertion(arr)
